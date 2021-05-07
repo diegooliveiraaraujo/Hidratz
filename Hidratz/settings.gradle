@@ -1,0 +1,2 @@
+rootProject.name = "Hidratz"
+include ':app'
