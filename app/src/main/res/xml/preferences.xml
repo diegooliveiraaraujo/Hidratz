@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/preference"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditTextPreference
+        android:dialogTitle="Enter a daily intake goal in fl oz"
+        android:defaultValue="80"
+        android:key="goal"
+        android:title="Intake Goal"
+        android:dialogLayout="@layout/preference_edit_text"
+        />
+    <EditTextPreference
+        android:dialogTitle="Enter a wakeup time in military time (0-23)"
+        android:key="wake_up_time"
+        android:title="Wake-up Time"
+        android:dialogLayout="@layout/preference_edit_text"
+        />
+    <EditTextPreference
+        android:dialogTitle="Enter a bedtime in military time (0-23)"
+        android:key="bedtime"
+        android:title="Bedtime"
+        android:dialogLayout="@layout/preference_edit_text"
+        />
+    <EditTextPreference
+        android:dialogTitle="Enter your height"
+        android:key="height"
+        android:title="Height"
+        android:dialogLayout="@layout/preference_edit_text"
+        />
+    <EditTextPreference
+        android:dialogTitle="Enter your weight"
+        android:key="weight"
+        android:title="Weight"
+        android:dialogLayout="@layout/preference_edit_text"
+        />
+
+    <SwitchPreference
+        android:key="switch"
+        android:title="Reminders"
+        android:summary="Click to switch on or off"
+        android:defaultValue="true"/>
+
+</androidx.preference.PreferenceScreen>

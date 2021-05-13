@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">HiDr8</string>
+    <string name="weekly_report">Weekly Report</string>
+    <string name="weekly_completion">Weekly Completion</string>
+    <string name="sunday">Sun</string>
+    <string name="monday">Mon</string>
+    <string name="tuesday">Tue</string>
+    <string name="wednesday">Wed</string>
+    <string name="thursday">Thu</string>
+    <string name="friday">Fri</string>
+    <string name="saturday">Sat</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="amount">Amount</string>
+    <string name="go_back_weekly_report">Go Back</string>
+    <string-array name="navigation_drawer_items_main_array">
+        <item>Change Daily Goal</item>
+        <item>Additional Resources</item>
+    </string-array>
+    <string name="benefits_of_water">The Benefits of Drinking Water</string>
+    <string name="learn_more">Learn More</string>
+    <string-array name="navigation_drawer_items_more_information_array">
+        <item>Change Daily Goal</item>
+        <item>Back to Water Tracker</item>
+    </string-array>
+    <string name="settings_fragment">Settings Fragment</string>
+    <string name="save_and_exit">Save and Exit</string>
+    <string name="additionalInfo1">1. Your joints are made of cartilage, which is 80% water. Long term dehydration can lead to joint pain, as they reduce the joint\'s ability to absorb shock.</string>
+    <string name="additionalInfo2">2. Water forms saliva and other bodily lubricants that keep your eyes, nose, and mouth from feeling dry. If you\'re struggling with dry lips, try drinking more water!</string>
+    <string name="additionalInfo3">3. Your blood is more than 90% water, and your blood carries oxygen to the different parts of your body to keep you alive. Lack of water can make blood thicker, leading to higher blood pressure.</string>
+    <string name="additionalInfo4">4. Your skin relies a lot on water to remain youthful. Dehydration can lead to skin disorders and premature wrinkles.</string>
+    <string name="additionalInfo5">5. Water can regulate your body temperature, especially when you\'re hot. If you struggle with feeling like you can\'t cool down after being outside, drink more water!</string>
+    <string name="additionalInfo6">6. Most nutrients you are consuming need to be dissolved by water in order to be accessible and helpful!</string>
+</resources>

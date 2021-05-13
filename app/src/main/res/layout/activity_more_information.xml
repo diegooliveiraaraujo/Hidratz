@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+using the DrawerLayout as the top level layout is necessary to use a navigation drawer
+-->
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_more_information_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MoreInformation">
+
+    <!--
+        ConstraintLayout is used to hold the the ui elements that are not in the navigation drawer
+    -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <!--
+        TextView that currently holds a placeholder title "The Benefits of Drinking Water"
+        -->
+
+        <TextView
+            android:id="@+id/benefits_water_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="@string/benefits_of_water"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/learn_more_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:onClick="learnMoreOnClick"
+            android:background="@android:color/holo_blue_light"
+            android:textColor="@android:color/white"
+            android:text="@string/learn_more"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!--
+        Toolbar used to arrange the ActionBar and the hamburger button
+        The theme is changed to a custom style so that only the hamburger button is shown
+        -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/information_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <TextView
+            android:id="@+id/additionalInfo1"
+            android:layout_width="338dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:text="@string/additionalInfo1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/benefits_water_text" />
+
+        <TextView
+            android:id="@+id/additionalInfo2"
+            android:layout_width="338dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/additionalInfo2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/additionalInfo1" />
+
+        <TextView
+            android:id="@+id/additionalInfo3"
+            android:layout_width="338dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/additionalInfo3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/additionalInfo2" />
+
+        <TextView
+            android:id="@+id/additionalInfo4"
+            android:layout_width="338dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/additionalInfo4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/additionalInfo3" />
+
+        <TextView
+            android:id="@+id/additionalInfo5"
+            android:layout_width="338dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/additionalInfo5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/additionalInfo4" />
+
+        <TextView
+            android:id="@+id/additionalInfo6"
+            android:layout_width="338dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/additionalInfo6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/additionalInfo5" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--
+    ListView that holds the elements in the navigation drawer
+    -->
+    <ListView
+        android:id="@+id/left_more_information_drawer"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#FFFFFF"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp" />
+
+</androidx.drawerlayout.widget.DrawerLayout>
