@@ -14,7 +14,7 @@ public class Notify extends BroadcastReceiver {
         //building what the notification will look like
         Notification builder = new Notification.Builder(context)
                 .setSmallIcon(R.drawable.water_bottle)
-                .setContentTitle("Hora de beber água!")
+                .setContentTitle("Drink Water!")
                 .setContentText("Click to input water")
                 .build();
 

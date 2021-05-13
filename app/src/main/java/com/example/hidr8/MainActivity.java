@@ -114,7 +114,12 @@ public class MainActivity extends AppCompatActivity{
 
         recommendedGoal = findViewById(R.id.recommended_goal);
         String weight = pref.getString("weight", "140");
-        new GetWebServiceData().execute(weight);
+        String height = pref.getString("height", "140");
+        try{
+            new GetWebServiceData().execute(new JSONObject("{'weight': "+weight+", 'height': "+height+" }"));
+        } catch (Exception e){
+
+        }
 
         //calls addNotification() method to create a new notification if the user has reminders on
         if(pref.getBoolean("switch", false)) {
@@ -165,7 +170,7 @@ public class MainActivity extends AppCompatActivity{
         waterProgressBar.setProgress((int)((currentAmount / goal) * 100));
 
         //sets the text above the waterProgressBar to the currentAmount next to the goal value
-        waterAmountText.setText(currentAmount + " fl oz / " + goal + " fl oz");
+        waterAmountText.setText(currentAmount + " ml / " + goal + " ml");
 
         //creates a OnClickListener for the weeklyReportButton that starts the WeeklyReport activity
         //when the button is clicked
@@ -190,7 +195,7 @@ public class MainActivity extends AppCompatActivity{
         waterProgressBar.incrementProgressBy(Math.round(incrementCount));
         //increases the currentAmount based on the current containerSize
         currentAmount += Math.round(containerSize);
-        waterAmountText.setText(currentAmount + " fl oz / " + goal + " fl oz");
+        waterAmountText.setText(currentAmount + " ml / " + goal + " ml");
         SharedPreferences.Editor edit = pref.edit();
         edit.putFloat("current_amount", currentAmount);
         edit.apply();
@@ -210,36 +215,14 @@ public class MainActivity extends AppCompatActivity{
         //value will be passed into this method as a string to change the json that is returned
         @Override
         protected Object doInBackground(Object[] objects) {
-            StringBuffer response;
-            URL url;
             String responseText;
             String returnedGoal = "";
 
             try {
-                //connects to the web service directly
-                url = new URL("http://70.32.24.170:8080/goal?weight=" + objects[0]);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                Integer peso = Integer.parseInt(new JSONObject(objects[0].toString()).get("weight").toString());
+                float objetivo = (float) (peso * 35) / 1000;
 
-                //set connection properties
-                conn.setReadTimeout(5000);
-                conn.setConnectTimeout(5000);
-                conn.setRequestMethod("GET");
-
-                //get the response from the web service
-                int responseCode = conn.getResponseCode();
-                response = new StringBuffer();
-                if (responseCode == HttpsURLConnection.HTTP_OK) {
-                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    String output;
-
-                    while ((output = in.readLine()) != null) {
-                        response.append(output);
-                    }
-                    in.close();
-                }
-
-                //store the response as a string and create a JSONObject to parse the JSON
-                responseText = response.toString();
+                responseText = "{goal: "+objetivo+"}";
                 JSONObject jsonResponse = new JSONObject(responseText);
 
                 //if the json has a goal field set the value of returned goal to that value
@@ -259,7 +242,8 @@ public class MainActivity extends AppCompatActivity{
         @Override
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
-            recommendedGoal.setText("Recommended goal: " + (String)o + " fl oz");
+            System.out.println(o);
+            recommendedGoal.setText("Meta recomendada : " + (String)o + " litros");
         }
     }
 
