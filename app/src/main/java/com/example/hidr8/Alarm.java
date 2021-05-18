@@ -1,19 +1,14 @@
 package com.example.hidr8;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlarmManager;
-import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -53,7 +48,18 @@ public class Alarm extends AppCompatActivity {
         timePicker.setIs24HourView(true);
 
         btnNotify.setOnClickListener(notifyListener);
+
+        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                int interval = 0;
+                if(activated)
+                    interval = Integer.parseInt(editMinutes.getText().toString());
+                setupNotification(activated, interval, hourOfDay, minute);
+            }
+        });
     }
+
 
     private void alert(int resId) {
         Toast.makeText(Alarm.this, resId, Toast.LENGTH_SHORT).show();
