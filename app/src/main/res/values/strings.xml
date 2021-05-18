@@ -16,12 +16,14 @@
     <string-array name="navigation_drawer_items_main_array">
         <item>Change Daily Goal</item>
         <item>Additional Resources</item>
+        <item>Alarm Configuration</item>
     </string-array>
     <string name="benefits_of_water">The Benefits of Drinking Water</string>
     <string name="learn_more">Learn More</string>
     <string-array name="navigation_drawer_items_more_information_array">
         <item>Change Daily Goal</item>
         <item>Back to Water Tracker</item>
+        <item>Alarm Configuration</item>
     </string-array>
     <string name="settings_fragment">Settings Fragment</string>
     <string name="save_and_exit">Save and Exit</string>
@@ -31,4 +33,14 @@
     <string name="additionalInfo4">4. Your skin relies a lot on water to remain youthful. Dehydration can lead to skin disorders and premature wrinkles.</string>
     <string name="additionalInfo5">5. Water can regulate your body temperature, especially when you\'re hot. If you struggle with feeling like you can\'t cool down after being outside, drink more water!</string>
     <string name="additionalInfo6">6. Most nutrients you are consuming need to be dissolved by water in order to be accessible and helpful!</string>
+    <string name="intervalo">Digite o intervalo (min)</string>
+    <string name="notify">Notificar</string>
+    <string name="pause">Pausar</string>
+    <string name="validation">O intervalo precisa ser definido</string>
+    <string name="zero_value">O valor precisa ser maior que zero</string>
+    <string name="notified">Alerta ativado</string>
+    <string name="notified_pause">Alarme desativado</string>
+    <string name="ok">OK</string>
+    <string name="about_app">Digite o horário que deseja começar a receber as notificações, após isso defina o intervalo(min)
+    que será enviado os alertas para você, após isso, se hidrate! =D</string>
 </resources>

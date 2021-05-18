@@ -5,10 +5,28 @@
     android:layout_height="match_parent">
 
     <EditTextPreference
-        android:dialogTitle="Coloque uma meta diária em ml"
+        android:dialogTitle="Enter a daily intake goal in fl oz"
         android:defaultValue="80"
         android:key="goal"
-        android:title="Defina sua meta"
+        android:title="Intake Goal"
+        android:dialogLayout="@layout/preference_edit_text"
+        />
+    <EditTextPreference
+        android:dialogTitle="Enter a wakeup time in military time (0-23)"
+        android:key="wake_up_time"
+        android:title="Wake-up Time"
+        android:dialogLayout="@layout/preference_edit_text"
+        />
+    <EditTextPreference
+        android:dialogTitle="Enter a bedtime in military time (0-23)"
+        android:key="bedtime"
+        android:title="Bedtime"
+        android:dialogLayout="@layout/preference_edit_text"
+        />
+    <EditTextPreference
+        android:dialogTitle="Enter your height"
+        android:key="height"
+        android:title="Height"
         android:dialogLayout="@layout/preference_edit_text"
         />
     <EditTextPreference

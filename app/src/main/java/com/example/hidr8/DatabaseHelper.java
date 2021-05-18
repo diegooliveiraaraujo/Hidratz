@@ -17,15 +17,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "water_database";
     private static final int DATABASE_VERSION = 1;
-    private static final String TABLE_GOAL_PROGRESS = "goal_progress";
-    private static final String TABLE_DAILY_INPUT = "daily_input";
+    private static final String TABLE_GOAL_PROGRESS = "objetivo_consumo";
+    private static final String TABLE_DAILY_INPUT = "historico_consumo";
 
 
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLE_GOAL_PROGRESS + "(" + " date DATE PRIMARY KEY," + " goal FLOAT," + " progress FLOAT)");
-        db.execSQL("CREATE TABLE " + TABLE_DAILY_INPUT + "(" + " date DATE," + " time Time," + " amount FLOAT," + " PRIMARY KEY(date, time)," + " FOREIGN KEY(date) REFERENCES TABLE_GOAL_PROGRESS(date))");
+        db.execSQL("CREATE TABLE " + TABLE_GOAL_PROGRESS + "(" + " date DATE PRIMARY KEY," + " objetivo FLOAT," + " progresso FLOAT)");
+        db.execSQL("CREATE TABLE " + TABLE_DAILY_INPUT + "(" + " date DATE," + " time Time," + " consumo FLOAT," + " PRIMARY KEY(date, time)," + " FOREIGN KEY(date) REFERENCES TABLE_GOAL_PROGRESS(date))");
     }
 
     /*method that inserts data into both tables when the user adds water to the goal
@@ -36,14 +36,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("date", date.toString());
-        values.put("goal", goal);
-        values.put("progress", progress);
+        values.put("objetivo", goal);
+        values.put("progresso", progress);
         db.insertWithOnConflict(TABLE_GOAL_PROGRESS, null, values, SQLiteDatabase.CONFLICT_REPLACE);
 
         values.clear();
         values.put("date", date.toString());
         values.put("time", time.toString());
-        values.put("amount", amount);
+        values.put("consumo", amount);
         db.insert(TABLE_DAILY_INPUT, null, values);
     }
 
@@ -51,7 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //used to populate the date list view on the weekly report screen
     public ArrayList<String> getDate() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT date FROM daily_input ORDER BY date DESC LIMIT 20", null);
+        Cursor cursor = db.rawQuery("SELECT date FROM historico_consumo ORDER BY date DESC LIMIT 20", null);
         ArrayList<String> array = new ArrayList<>(7);
 
         if(cursor != null) {
@@ -69,7 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //used to populate the time list view on the weekly report screen
     public ArrayList<String> getTime() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT time FROM daily_input ORDER BY date DESC LIMIT 20", null);
+        Cursor cursor = db.rawQuery("SELECT time FROM historico_consumo ORDER BY date DESC LIMIT 20", null);
         ArrayList<String> array = new ArrayList<>(7);
 
         if(cursor != null) {
@@ -87,13 +87,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //used to populate the amount list view on the weekly report screen
     public ArrayList<String> getAmount() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT amount FROM daily_input ORDER BY date DESC LIMIT 20", null);
+        Cursor cursor = db.rawQuery("SELECT consumo FROM historico_consumo ORDER BY date DESC LIMIT 20", null);
         ArrayList<String> array = new ArrayList<>(7);
 
         if(cursor != null) {
             if(cursor.moveToFirst()) {
                 do {
-                    array.add(cursor.getString(cursor.getColumnIndex("amount")));
+                    array.add(cursor.getString(cursor.getColumnIndex("consumo")));
                 } while(cursor.moveToNext());
             }
         }
@@ -113,7 +113,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
         //contains all records in goal_progress ordered by date in descending order
-        Cursor cursor = db.rawQuery("Select * FROM goal_progress ORDER BY date DESC LIMIT 7", null);
+        Cursor cursor = db.rawQuery("Select * FROM objetivo_consumo ORDER BY date DESC LIMIT 7", null);
 
         //creates a daysOfWeek array to hold -1 when the day is not complete and the value for the day of the week otherwise
         int[] daysOfWeek = {-1,-1,-1,-1,-1,-1,-1};
@@ -128,7 +128,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     date = Date.valueOf(cursor.getString(cursor.getColumnIndex("date")));
 
                     if(startDate.compareTo(date) < 0) {
-                        if(cursor.getFloat(cursor.getColumnIndex("progress")) >= cursor.getFloat(cursor.getColumnIndex("goal"))) {
+                        if(cursor.getFloat(cursor.getColumnIndex("progresso")) >= cursor.getFloat(cursor.getColumnIndex("objetivo"))) {
                             c.setTime(date);
                             daysOfWeek[arrayCounter] = c.get(Calendar.DAY_OF_WEEK);
                             arrayCounter++;
