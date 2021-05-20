@@ -12,16 +12,10 @@
         android:dialogLayout="@layout/preference_edit_text"
         />
     <EditTextPreference
-        android:dialogTitle="Enter your weight"
+        android:dialogTitle="Coloque seu peso"
         android:key="weight"
-        android:title="Weight"
+        android:title="Peso"
         android:dialogLayout="@layout/preference_edit_text"
         />
-
-    <SwitchPreference
-        android:key="switch"
-        android:title="Reminders"
-        android:summary="Click to switch on or off"
-        android:defaultValue="true"/>
 
 </androidx.preference.PreferenceScreen>

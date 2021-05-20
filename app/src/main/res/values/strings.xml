@@ -14,9 +14,8 @@
     <string name="amount">Amount</string>
     <string name="go_back_weekly_report">Go Back</string>
     <string-array name="navigation_drawer_items_main_array">
-        <item>Change Daily Goal</item>
-        <item>Additional Resources</item>
-        <item>Alarm Configuration</item>
+        <item>Mudar Objetivo Diário</item>
+        <item>Configuração de Alarme</item>
     </string-array>
     <string name="benefits_of_water">The Benefits of Drinking Water</string>
     <string name="learn_more">Learn More</string>

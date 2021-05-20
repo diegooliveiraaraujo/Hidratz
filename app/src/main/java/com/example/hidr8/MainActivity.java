@@ -134,10 +134,6 @@ public class MainActivity extends AppCompatActivity{
                         break;
                     case 1:
                         //when second item is selected
-                        startActivity(new Intent(MainActivity.this, MoreInformation.class));
-                        break;
-                    case 2:
-                        //when third item is selected
                         startActivity(new Intent(MainActivity.this, Alarm.class));
                         break;
                 }
