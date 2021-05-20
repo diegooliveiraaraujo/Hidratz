@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.app.AlarmManager;
 
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity{
     ImageButton waterBottle;
     //variable used to connect to the weekly report button
     Button weeklyReportButton;
+    Spinner dropdown;
     //variable used to hold the current containerSize
     float containerSize;
     //variable used to hold the goal amount
@@ -153,6 +155,15 @@ public class MainActivity extends AppCompatActivity{
         waterProgressBar = findViewById(R.id.progressBar);
         waterBottle = findViewById(R.id.WaterBottle);
         weeklyReportButton = findViewById(R.id.weeklyReport);
+        dropdown = findViewById(R.id.spinner1);
+        //get the spinner from the xml.
+        //create a list of items for the spinner.
+        String[] items = new String[]{"1", "2", "3"};
+        //create an adapter to describe how the items are displayed, adapters are used in several places in android.
+        //There are multiple variations of this, but this is the basic variant.
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        //set the spinners adapter to the previously created one.
+        dropdown.setAdapter(adapter1);
 
         //defines values based on the default shared preferences
         containerSize = pref.getFloat("container_size", 8);
@@ -163,7 +174,7 @@ public class MainActivity extends AppCompatActivity{
         waterProgressBar.setProgress((int)((currentAmount / goal) * 100));
 
         //sets the text above the waterProgressBar to the currentAmount next to the goal value
-        waterAmountText.setText(currentAmount + " ml / " + goal + " ml");
+        waterAmountText.setText(currentAmount/1000 + " l / " + goal/1000 + " l");
 
         //creates a OnClickListener for the weeklyReportButton that starts the WeeklyReport activity
         //when the button is clicked
@@ -188,7 +199,7 @@ public class MainActivity extends AppCompatActivity{
         waterProgressBar.incrementProgressBy(Math.round(incrementCount));
         //increases the currentAmount based on the current containerSize
         currentAmount += Math.round(containerSize);
-        waterAmountText.setText(currentAmount + " ml / " + goal + " ml");
+        waterAmountText.setText(currentAmount/1000 + " l / " + goal/1000 + " l");
         SharedPreferences.Editor edit = pref.edit();
         edit.putFloat("current_amount", currentAmount);
         edit.apply();

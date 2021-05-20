@@ -32,6 +32,13 @@ using the DrawerLayout as the top level layout is necessary to use a navigation 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"/>
+
         <!--
         ImageButton that displays the water bottle image and allows it to be used as a button
         -->
