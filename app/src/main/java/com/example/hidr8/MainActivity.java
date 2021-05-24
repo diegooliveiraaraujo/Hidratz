@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity{
         dropdown = findViewById(R.id.spinner1);
         //get the spinner from the xml.
         //create a list of items for the spinner.
-        String[] items = new String[]{"1", "2", "3"};
+        String[] items = new String[]{"100", "250", "500"};
         //create an adapter to describe how the items are displayed, adapters are used in several places in android.
         //There are multiple variations of this, but this is the basic variant.
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity{
         dropdown.setAdapter(adapter1);
 
         //defines values based on the default shared preferences
-        containerSize = pref.getFloat("container_size", 8);
+        containerSize = pref.getFloat("container_size", Float.parseFloat(dropdown.getSelectedItem().toString()));
         goal = Float.parseFloat(pref.getString("goal", "80"));
         incrementCount = (containerSize/goal) * 100;
         currentAmount = pref.getFloat("current_amount", 0);
@@ -247,7 +247,7 @@ public class MainActivity extends AppCompatActivity{
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
             System.out.println(o);
-            recommendedGoal.setText("Meta recomendada : " + (String)o + " litros");
+            recommendedGoal.setText("Meta sugerida: " + (String)o + " l");
         }
     }
 
