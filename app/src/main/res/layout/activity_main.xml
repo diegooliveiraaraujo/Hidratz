@@ -40,11 +40,26 @@ using the DrawerLayout as the top level layout is necessary to use a navigation 
         ProgressBar that displays progress to the daily goal
         -->
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:progressTint="#00BCD4"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:progress="0"
+            android:scaleY="6"
+            app:layout_constraintBottom_toTopOf="@+id/WaterBottle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:rotation="180"
+
+            />
+
         <ImageButton
             android:id="@+id/WaterBottle"
-            android:layout_width="347dp"
-            android:layout_height="305dp"
-            android:layout_marginTop="64dp"
+            android:layout_width="340dp"
+            android:layout_height="423dp"
             android:adjustViewBounds="true"
             android:background="@null"
             android:maxWidth="400dp"
@@ -58,38 +73,32 @@ using the DrawerLayout as the top level layout is necessary to use a navigation 
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.74" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:progressTint="#00BCD4"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="50dp"
-            android:progress="0"
-            android:scaleY="6"
-            app:layout_constraintBottom_toTopOf="@+id/WaterBottle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:rotation="180"
-
-            />
-
-        <Spinner
-            android:id="@+id/spinner1"
-            android:layout_width="108dp"
-            android:layout_height="56dp"
-            android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown"
-            tools:layout_editor_absoluteY="-4dp"
-            app:layout_constraintTop_toTopOf="@id/WaterBottle"
-            app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        <TextView
+            android:id="@+id/select_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:text="Selecione a quantidade de agua"
+            app:layout_constraintBottom_toTopOf="@+id/spinner1"
+            app:layout_constraintTop_toTopOf="@id/progressBar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <!--
         Weekly report button that changes to the WeeklyReport activity when clicked
         -->
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="107dp"
+            android:layout_height="49dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="@id/select_amount"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/WaterBottle" />
+
         <Button
             android:id="@+id/weeklyReport"
             android:layout_width="wrap_content"
