@@ -1,4 +1,4 @@
-# HiDr8
+# Hidratz
 Android application to remind the user to drink water during the day.
 
 # Screenshots

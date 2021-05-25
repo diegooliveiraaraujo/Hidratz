@@ -25,9 +25,10 @@ using the DrawerLayout as the top level layout is necessary to use a navigation 
         -->
         <TextView
             android:id="@+id/waterAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="132dp"
+            android:layout_height="22dp"
             android:text="Hello World!"
+            android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/progressBar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

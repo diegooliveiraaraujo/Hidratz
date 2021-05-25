@@ -12,6 +12,8 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -41,28 +43,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insertWithOnConflict(TABLE_GOAL_PROGRESS, null, values, SQLiteDatabase.CONFLICT_REPLACE);
 
         values.clear();
-        values.put("date", date.toString());
-        values.put("time", time.toString());
+        time.setSeconds(0);
+        values.put("date", date.toString() +" "+ time.toString());
         values.put("consumo", amount);
         db.insert(TABLE_DAILY_INPUT, null, values);
     }
 
     //method that returns an array list of all dates that have been recorded in the daily_input table
     //used to populate the date list view on the weekly report screen
-    public ArrayList<String> getDate() {
+    public Map<String, String> getDate() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT date FROM historico_consumo ORDER BY date DESC LIMIT 20", null);
-        ArrayList<String> array = new ArrayList<>(7);
+        Cursor cursor = db.rawQuery("SELECT date, sum(consumo) as consumo FROM historico_consumo GROUP BY strftime('%M', date) ORDER BY date DESC LIMIT 20", null);
+        Map<String, String> map = new HashMap<>();
 
         if(cursor != null) {
             if(cursor.moveToFirst()) {
                 do {
-                    array.add(cursor.getString(cursor.getColumnIndex("date")));
+                    map.put(cursor.getString(cursor.getColumnIndex("date")), cursor.getString(cursor.getColumnIndex("consumo")));
                 } while(cursor.moveToNext());
             }
         }
 
-        return array;
+        return map;
     }
 
     //method that returns an array list of all times that have been recorded in the daily_input table
@@ -76,24 +78,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if(cursor.moveToFirst()) {
                 do {
                     array.add(cursor.getString(cursor.getColumnIndex("time")));
-                } while(cursor.moveToNext());
-            }
-        }
-
-        return array;
-    }
-
-    //method that returns an array list of all amounts that have been recorded in the daily_input table
-    //used to populate the amount list view on the weekly report screen
-    public ArrayList<String> getAmount() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT consumo FROM historico_consumo ORDER BY date DESC LIMIT 20", null);
-        ArrayList<String> array = new ArrayList<>(7);
-
-        if(cursor != null) {
-            if(cursor.moveToFirst()) {
-                do {
-                    array.add(cursor.getString(cursor.getColumnIndex("consumo")));
                 } while(cursor.moveToNext());
             }
         }

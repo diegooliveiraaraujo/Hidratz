@@ -116,11 +116,6 @@ public class MainActivity extends AppCompatActivity{
 
         }
 
-        //calls addNotification() method to create a new notification if the user has reminders on
-        if(pref.getBoolean("switch", false)) {
-            addNotification();
-        }
-
         //array adapter created for the titles in the navigation drawer
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, navigationDrawerItemTitles);
         drawerList.setAdapter(adapter);
@@ -165,16 +160,27 @@ public class MainActivity extends AppCompatActivity{
         //set the spinners adapter to the previously created one.
         dropdown.setAdapter(adapter1);
 
+        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                containerSize = pref.getFloat("container_size", Float.parseFloat(parent.getItemAtPosition(position).toString()));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         //defines values based on the default shared preferences
-        containerSize = pref.getFloat("container_size", Float.parseFloat(dropdown.getSelectedItem().toString()));
-        goal = Float.parseFloat(pref.getString("goal", "80"));
+        goal = Float.parseFloat(pref.getString("goal", "0"));
         incrementCount = (containerSize/goal) * 100;
         currentAmount = pref.getFloat("current_amount", 0);
 
         waterProgressBar.setProgress((int)((currentAmount / goal) * 100));
 
         //sets the text above the waterProgressBar to the currentAmount next to the goal value
-        waterAmountText.setText(currentAmount/1000 + " l / " + goal/1000 + " l");
+        waterAmountText.setText(currentAmount/1000 + " L / " + goal/1000 + " L");
 
         //creates a OnClickListener for the weeklyReportButton that starts the WeeklyReport activity
         //when the button is clicked
@@ -199,7 +205,7 @@ public class MainActivity extends AppCompatActivity{
         waterProgressBar.incrementProgressBy(Math.round(incrementCount));
         //increases the currentAmount based on the current containerSize
         currentAmount += Math.round(containerSize);
-        waterAmountText.setText(currentAmount/1000 + " l / " + goal/1000 + " l");
+        waterAmountText.setText(currentAmount/1000 + " L / " + goal/1000 + " L");
         SharedPreferences.Editor edit = pref.edit();
         edit.putFloat("current_amount", currentAmount);
         edit.apply();
@@ -249,22 +255,6 @@ public class MainActivity extends AppCompatActivity{
             System.out.println(o);
             recommendedGoal.setText("Meta sugerida: " + (String)o + " l");
         }
-    }
-
-    private void addNotification() {
-        alarmMgr = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, Notify.class);
-        alarmIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
-
-        //Reads in the current date and time of the system
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        //sets the time of notification to start at 8am
-        calendar.set(Calendar.HOUR_OF_DAY, 8);
-        calendar.set(Calendar.MINUTE, 00);
-
-        //starts a repeating notification for every 30 minutes
-        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000*60*30, alarmIntent);
     }
 
 

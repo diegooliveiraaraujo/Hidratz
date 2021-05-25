@@ -13,7 +13,6 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".Alarm" />
-        <activity android:name=".MoreInformation" />
         <activity android:name=".Settings" />
         <activity android:name=".WeeklyReport" />
         <activity android:name=".MainActivity">
