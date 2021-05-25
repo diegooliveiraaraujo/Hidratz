@@ -10,7 +10,7 @@ using the DrawerLayout as the top level layout is necessary to use a navigation 
     android:layout_gravity="end"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="com.example.hidratz.MainActivity">
 
 
     <!--

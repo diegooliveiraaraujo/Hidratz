@@ -1,8 +1,10 @@
-package com.example.hidr8;
+package com.example.hidratz;
 
 import android.os.Bundle;
 
 import androidx.preference.PreferenceFragmentCompat;
+
+import com.example.hidratz.R;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
     @Override

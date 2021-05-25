@@ -1,4 +1,4 @@
-package com.example.hidr8;
+package com.example.hidratz;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -8,6 +8,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+
+import com.example.hidratz.R;
 
 public class NotificationPublisher extends BroadcastReceiver {
 

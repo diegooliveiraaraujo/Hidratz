@@ -1,4 +1,4 @@
-package com.example.hidr8;
+package com.example.hidratz;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.hidratz.R;
 
 import java.util.ArrayList;
 import java.util.Iterator;

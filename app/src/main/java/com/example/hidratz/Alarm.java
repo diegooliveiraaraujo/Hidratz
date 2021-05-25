@@ -1,4 +1,4 @@
-package com.example.hidr8;
+package com.example.hidratz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.example.hidratz.R;
 
 import java.util.Calendar;
 

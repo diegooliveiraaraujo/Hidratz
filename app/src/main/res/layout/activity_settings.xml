@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WeeklyReport">
+    tools:context="com.example.hidratz.WeeklyReport">
 
 
     <fragment
         android:id="@+id/settings_container"
-        android:name="com.example.hidr8.SettingsFragment"
+        android:name="com.example.hidratz.SettingsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"

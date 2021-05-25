@@ -1,10 +1,12 @@
-package com.example.hidr8;
+package com.example.hidratz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.hidratz.R;
 
 public class Settings extends AppCompatActivity {
 

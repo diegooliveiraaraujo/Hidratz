@@ -1,4 +1,4 @@
-package com.example.hidr8;
+package com.example.hidratz;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -6,6 +6,8 @@ import android.graphics.drawable.Drawable;
 
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.graphics.drawable.DrawableCompat;
+
+import com.example.hidratz.R;
 
 public class ManageDrawables {
 

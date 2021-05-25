@@ -1,4 +1,4 @@
-package com.example.hidr8;
+package com.example.hidratz;
 
 import android.content.ContentValues;
 import android.content.Context;
